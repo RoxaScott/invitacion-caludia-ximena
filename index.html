@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claudia Ximena - Mis 18 Años</title>
+    <style>
+        /* Estilo elegante, minimalista y moderno */
+        body {
+            font-family: 'Georgia', serif;
+            background-color: #0d0d0d;
+            color: #f5f5f5;
+            text-align: center;
+            padding: 40px 20px;
+            margin: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #1a1a1a;
+            padding: 40px 30px;
+            border-radius: 20px;
+            border: 1px solid #d4af37; /* Borde dorado */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+        }
+        .parents {
+            font-size: 0.95rem;
+            color: #b3b3b3;
+            font-style: italic;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            letter-spacing: 0.5px;
+        }
+        h1 { 
+            color: #d4af37; 
+            font-size: 2.5rem;
+            letter-spacing: 3px;
+            margin-bottom: 5px;
+            font-weight: 400;
+        }
+        h2 {
+            color: #ffffff;
+            font-size: 1.4rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+        .date-highlight {
+            color: #e0a96d;
+            font-size: 1.2rem;
+            letter-spacing: 1.5px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        #countdown {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 2.2rem;
+            font-weight: 300;
+            margin: 30px 0;
+            color: #d4af37;
+            letter-spacing: 1px;
+        }
+        p.instruction {
+            font-size: 0.95rem;
+            color: #cccccc;
+            line-height: 1.5;
+            margin-bottom: 25px;
+        }
+        input[type="text"], input[type="email"] {
+            width: 85%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 6px;
+            border: 1px solid #444;
+            background-color: #262626;
+            color: white;
+            font-size: 1rem;
+            text-align: center;
+        }
+        input:focus {
+            outline: none;
+            border-color: #d4af37;
+        }
+        button {
+            background-color: #d4af37;
+            color: #0d0d0d;
+            font-weight: bold;
+            border: none;
+            padding: 14px 35px;
+            font-size: 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 15px;
+            letter-spacing: 1px;
+        }
+        button:hover { 
+            background-color: #fff;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+        }
+        .oculto { display: none; }
+        
+        #successMessage {
+            padding: 20px;
+        }
+        #successMessage h3 { color: #d4af37; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Presentación de los Padres -->
+    <div class="parents">
+        Con la bendición de nuestros padres:<br>
+        <strong>Claudia Vivíana Rodriguez Martinez</strong> & <strong>Alberto Arellano Acosta</strong>
+    </div>
+
+    <!-- Nombre de la Festejada -->
+    <h1>CLAUDIA XIMENA</h1>
+    <h2>Mis 18 Años</h2>
+    
+    <div class="date-highlight">28 DE AGOSTO DE 2026</div>
+    
+    <hr style="border: 0; border-top: 1px solid #333; width: 80%; margin: 20px auto;">
+
+    <!-- Reloj de Cuenta Regresiva -->
+    <div id="countdown">Calculando tiempo...</div>
+
+    <!-- Formulario de Registro -->
+    <div id="formContainer">
+        <p class="instruction">Regístrate en la lista para recibir tu invitación formal junto con tu acceso QR exclusivo directo en tu correo al finalizar la cuenta regresiva.</p>
+        
+        <form id="partyForm">
+            <input type="text" id="nameField" placeholder="Nombre Completo" required><br>
+            <input type="email" id="emailField" placeholder="Correo Electrónico" required><br>
+            <button type="submit">SOLICITAR MI ACCESO QR</button>
+        </form>
+    </div>
+    
+    <!-- Mensaje de éxito -->
+    <div id="successMessage" class="oculto">
+        <h3>¡Registro Confirmado! ✨</h3>
+        <p>Tus datos se han guardado con éxito.</p>
+        <p style="color: #b3b3b3; font-size: 0.9rem; line-height: 1.4;">Cuando la cuenta regresiva llegue a cero, te enviaremos la invitación digital con el pase QR para el salón directamente a tu correo electrónico.</p>
+    </div>
+</div>
+
+<script>
+    // ========================================================
+    // 1. CUENTA REGRESIVA: 28 de Agosto de 2026
+    // ========================================================
+    // Los meses van de 0 a 11 en JavaScript (Agosto es el mes 7)
+    const fechaEvento = new Date(2026, 7, 28, 20, 0, 0).getTime(); 
+
+    const x = setInterval(function() {
+        const ahora = new Date().getTime();
+        const distancia = fechaEvento - ahora;
+
+        const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
+        const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
+        const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
+
+        document.getElementById("countdown").innerHTML = dias + "d : " + horas + "h : " + minutes + "m : " + segundos + "s";
+
+        if (distancia < 0) {
+            clearInterval(x);
+            document.getElementById("countdown").innerHTML = "¡EMPEZÓ LA FIESTA! 🥂";
+            document.getElementById("formContainer").innerHTML = "<p>El registro formal ha cerrado.</p>";
+        }
+    }, 1000);
+
+    // ========================================================
+    // 2. ENVÍO DE DATOS INVISIBLE A GOOGLE FORMS
+    // ========================================================
+    document.getElementById('partyForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const nombre = document.getElementById('nameField').value;
+        const correo = document.getElementById('emailField').value;
+
+        // Tu enlace de Google Forms listo para recibir respuestas automáticamente
+        const googleFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLSd_-gX8RCahqtjTxsVnIDCM8qdOodEYDXhY6DruQnZ7h7-JRg/formResponse";
+        
+        const formData = new FormData();
+        
+        // Configuraciones de IDs vinculadas correctamente:
+        formData.append('entry.1939534183', nombre); // ID de Nombre
+        formData.append('entry.1994293098', correo); // ID de Correo 
+
+        fetch(googleFormUrl, {
+            method: 'POST',
+            mode: 'no-cors',
+            body: formData
+        }).then(() => {
+            document.getElementById('formContainer').classList.add('oculto');
+            document.getElementById('successMessage').classList.remove('oculto');
+        }).catch(error => {
+            console.error('Error:', error);
+            alert('Hubo un problema. Por favor, inténtalo de nuevo.');
+        });
+    });
+</script>
+
+</body>
+</html>
